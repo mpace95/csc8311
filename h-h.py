@@ -20,25 +20,25 @@ e = [-12,115,10.613]
 
 # external input - to be input by user
 
-# i_ext = input("what is the external input to the neuron ?")
+i_ext = int(input("what is the external input to the neuron ?"))
 
-i_ext = 60  # set myself for now as input seems to still think it's type string
+#i_ext = 60  # set myself for now as input seems to still think it's type string
 print("You have set the external input to", i_ext)
 type(i_ext)
 
 # resting potential of neuron - input by user
-# rest_pot = input("what is the neuron resting potential? Please make this a zero or negative integer")
-mem_pot = -65  # set myself for now as input seems to still think it's type string
+mem_pot = int(input("what is the neuron resting potential? Please make this a zero or negative integer"))
+#mem_pot = -65  # set myself for now as input seems to still think it's type string
 print("you have set the membrane resting potential to", mem_pot, "mv")
 
 # initial time set to zero
 current_time = 0
 
 # set initial x values
-x = [0, 0, 1]
+#x = [0, 0, 1]
 
 # time step for the eular integration method
-t_step = 0.1
+t_step = 0.001
 
 # Eular integration method
 
@@ -47,15 +47,18 @@ t_step = 0.1
 # def integration(t_step, i_ext, rest_pot, e_n, e_m, w_h):
 # taken out function definition for the moment - put back in or rearrange to make use of classes
 
-t = sc.arange(0, 50, t_step)
-alpha = [None]*3 # set empty list of alphas to change
+t = sc.arange(0, 12, step=t_step)
+alpha = [None]*3  # set empty list of alphas to change
 beta = [None]*3  # set empty list of beta to change
 x_0 = [None]*3  # empty list for x_0
+x = [0, 0, 1]  # initial
 gnmh = [None]*3  # empty list for gnmh
 tau = [None]*3
 mem_pot = mem_pot
 potential = np.array(mem_pot)
-time = np.array(0)
+current_time = 0
+time = np.array(current_time)
+
 for i in t:
     if t.any() == 10:
         i_ext = 5  # starts the external current at time 10
@@ -81,16 +84,18 @@ for i in t:
         #print(tau)
         x_0 = [x * y for x, y in zip(alpha, tau)]
 
-        # leaky integration part
-        #x[i] = ((1 - t_step)/tau[i]) * (x + (t_step/(tau[i] * x_0[q])))
+        # leaky integration part---- work out how !!!
+        x = (np.multiply((1 - (np.divide(t_step, tau))), x)) + np.multiply((np.divide(t_step, tau)), x_0)
+        # x = (1 - dt /eldiv/ tau) *elmul* x + dt /eldiv/ tau *elmul* x_0
+        # x = ((1 - t_step)/tau) * (x + (t_step/(tau * x_0)))
 
-            # conductance calculations
+        # conductance calculations
         gnmh[0] = g_k * (x[0]**4)
         gnmh[1] = g_na * ((x[1]**3) * x[2])
         gnmh[2] = g_r
 
-            # ohms law for current
-        minus = [mem_pot - x for x in e ]
+        # ohms law for current
+        minus = [mem_pot - x for x in e]
         current = [x * y for x, y in zip(gnmh, minus)]
 
             # update membrane potential
@@ -100,11 +105,13 @@ for i in t:
 
 
             # storage of values needed for plotting graph
-        for i in (t>0):
+        for i in (t >= 0):
             current_time = current_time + 1
+        time = np.append(time, current_time)
             #time = np.array(t)
-            time = np.append(time, t)
-        #potential = np.array(potential)
+        #time = np.array(t)
+        #potential = np.array(mem_pot)
+
 
 
 fig, ax = plt.subplots()
