@@ -1,0 +1,96 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Medium;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red27\green31\blue34;\red10\green77\blue204;\red191\green100\blue38;
+\red32\green32\blue32;\red153\green168\blue186;\red244\green246\blue249;}
+{\*\expandedcolortbl;;\cssrgb\c14118\c16078\c18039;\cssrgb\c1176\c40000\c83922;\csgenericrgb\c74902\c39216\c14902;
+\csgenericrgb\c12549\c12549\c12549;\csgenericrgb\c60000\c65882\c72941;\cssrgb\c96471\c97255\c98039;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww13780\viewh18000\viewkind0
+\deftab720
+\pard\pardeftab720\sl600\sa320\partightenfactor0
+
+\f0\b\fs48 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 A model of the Hodgkin-huxley neuron spike\
+\pard\pardeftab720\sl360\sa320\partightenfactor0
+
+\f1\b0\fs32 \cf2 This project uses the Hodgkin-huxley model of a neuron spike. The idea for this came from Fundamentals of Computational Neuroscience (Trappenberg, 2009). It takes in user input of the neuron resting potential, and the external input being injected to the neuron. The program passes these input variables into the Hodgkin-Huxley equations and produces  a time against membrane potential graph of the synapse. In this model the spike threshold of the neuron \
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b\fs36 \cf3 \strokec3 \
+\pard\pardeftab720\sl440\sa320\partightenfactor0
+\cf2 \strokec2 Getting started\
+\pard\pardeftab720\sl360\sa320\partightenfactor0
+
+\f1\b0\fs32 \cf2 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.\
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f0\b\fs30 \cf3 \strokec3 \
+\pard\pardeftab720\sl360\sa320\partightenfactor0
+\cf2 \strokec2 Prerequisites\
+\pard\pardeftab720\sl360\sa320\partightenfactor0
+
+\f1\b0\fs32 \cf2 You will need to install these things in order for the code to run successfully.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 import \cf6 matplotlib.pyplot \cf4 as \cf6 plt\
+\cf4 import \cf6 numpy \cf4 as \cf6 np\
+\cf4 from \cf6 tqdm \cf4 import \cf6 tqdm\
+\pard\pardeftab720\sl380\partightenfactor0
+
+\fs27\fsmilli13600 \cf2 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f0\b\fs30 \cf3 \cb1 \strokec3 \
+\pard\pardeftab720\sl360\sa320\partightenfactor0
+\cf2 \strokec2 What to input \
+The program will prompt to put in a plausible value for external input potential to the neuron (a.k.a - a positive integer) and a plausible value for the resting membrane potential (most neurons have a resting potential of -65mV, but you are welcome to see what happens with other values). You can see that if you put in a higher external input (e.g. 200mv) you can see that multiple spikes will be initialized, but if the external input is lower - e.g 5 a spike may not be initialised. \
+\pard\pardeftab720\sl360\sa320\partightenfactor0
+
+\f1\b0\fs32 \cf2 \
+Example input and output \
+\pard\pardeftab720\sl380\partightenfactor0
+
+\f2\fs27\fsmilli13600 \cf2 \cb7 Input example 1:\
+ Set i_ext = 30\
+ Set mem_pot = -65\
+\pard\pardeftab720\sl360\sa320\partightenfactor0
+
+\f1\fs32 \cf2 \cb1 \
+this will result in the following output graph \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f3\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {{\NeXTGraphic Pasted Graphic.tiff \width11940 \height9380
+}¬}
+\f2\fs27\fsmilli13600 \cf2 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\pard\pardeftab720\sl440\sa320\partightenfactor0
+
+\f0\b\fs36 \cf2 \cb1 Tests\
+\pard\pardeftab720\sl360\sa320\partightenfactor0
+
+\f1\b0\fs32 \cf2 Tests were not implemented in this case due to time restrictions, in future tests should be added.\
+
+\f0\b\fs36 \cf3 \strokec3 \
+\pard\pardeftab720\sl440\sa320\partightenfactor0
+\cf2 \strokec2 Deployment\
+\pard\pardeftab720\sl360\sa320\partightenfactor0
+
+\f1\b0\fs32 \cf2 Run the h-h.py file and input relevant values for membrane potential and external input when prompted, after the loading bar indicates 100% the graph should appear and save automatically. \
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b\fs36 \cf3 \strokec3 \
+\pard\pardeftab720\sl440\sa320\partightenfactor0
+\cf2 \strokec2 Versioning\
+\pard\pardeftab720\sl360\sa320\partightenfactor0
+
+\f1\b0\fs32 \cf2 We use\'a0\cf3 \strokec3 GitHub \cf2 \strokec2 for versioning. For the versions available, see the commits on this repository {\field{\*\fldinst{HYPERLINK "https://github.com/mpace95/csc8311/commits/master"}}{\fldrslt https://github.com/mpace95/csc8311/commits/master}}.\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b\fs36 \cf3 \strokec3 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl360\partightenfactor0
+\ls1\ilvl0
+\f1\b0\fs32 \cf2 \strokec2 \
+}
